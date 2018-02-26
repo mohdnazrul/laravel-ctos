@@ -1,0 +1,20 @@
+{
+    "name": "mohdnazrul/laravel-ctos",
+    "description": "Soapclient integrate using Laravel (CTOS WSDL API)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohd Nazrul",
+            "email": "nazrulmustaffa@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.7@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "MohdNazrul\\CTOSLaravel\\": "src"
+        }
+    },
+}
