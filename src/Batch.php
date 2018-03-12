@@ -21,7 +21,7 @@ class Batch
         $this->OUTPUT_FORMAT = $output_format;
         $this->XML_NAMESPACE = $xml_namespace;
         $this->COMPANY_CODE = $company_code;
-        $this->ACCOUNT_CODE = $account_code;
+        $this->ACCOUNT_NO = $account_code;
         $this->USER_ID = $user_id;
         $this->TOTAL_RECORD = $total_record;
     }
@@ -96,7 +96,7 @@ class Batch
         return $this->TOTAL_RECORD;
     }
 
-    public function XMLBatchWithRecords()
+    public function XMLBatchWithRecords($report_type, $records)
     {
         $str = '<batch output=\''.$this->OUTPUT_FORMAT.'\' no=\''.$this->BATCH_NO.'\' xmlns=\''.
             $this->XML_NAMESPACE.'\'><company_code>'.$this->COMPANY_CODE.'</company_code><account_no>'.
@@ -104,6 +104,7 @@ class Batch
         if ($report_type == "request" || $report_type == "requestConfirm" || $report_type == "requestLite") {
             $str .= '<record_total>'.$this->TOTAL_RECORD.'</record_total>';
         }
+        $str .= $records;
         $str .= '</batch>';
 
         return $str;
