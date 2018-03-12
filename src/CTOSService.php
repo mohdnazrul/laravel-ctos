@@ -1,4 +1,12 @@
 <?php
+/**
+ * @copyright MIT
+ * @version 1.0.1
+ * @created_by Nazrul Mustaffa
+ * @email nazrul.mustaffa@capitalbay.com
+ */
+
+
 namespace MohdNazrul\CTOSLaravel;
 
 class CTOSService
@@ -12,6 +20,12 @@ class CTOSService
     private $INSIDE_ENVELOPE;
     private $POSTMEN;
 
+    /**
+     * CTOSService constructor.
+     * @param $url
+     * @param $username
+     * @param $password
+     */
     public function __construct($url, $username, $password)
     {
         $this->SOAP_URL = $url;
@@ -19,6 +33,10 @@ class CTOSService
         $this->SOAP_PASS = $password;
     }
 
+    /**
+     * @param $xml
+     * @param bool $escapeFomatter
+     */
     public function setXMLPostString($xml, $escapeFomatter = false)
     {
         if ($escapeFomatter) {
@@ -33,6 +51,14 @@ class CTOSService
     }
 
 
+    /**
+     * @param null $contentType
+     * @param null $accept
+     * @param null $cacheControl
+     * @param null $pragma
+     * @param null $soapAction
+     * @param bool $auth
+     */
     public function setHeader($contentType = null, $accept = null, $cacheControl = null,
                               $pragma = null, $soapAction = null, $auth = false)
     {
@@ -44,18 +70,20 @@ class CTOSService
             "Pragma: " . $this->setPragma($pragma),
             "SOAPAction: " . $this->setSOAPAction($soapAction),
             "Content-length: " . strlen($this->XMLPOSTSTRING),
-        ); //SOAPAction: your op URL
+        );
 
         if ($auth) {
             $headers[] = "username:" . $this->SOAP_USER;
             $headers[] = "password:" . $this->SOAP_PASS;
         }
 
-//        return $headers;
         $this->HEADERS = $headers;
 
     }
 
+    /**
+     * @return \Exception
+     */
     public function connect()
     {
         $ch = curl_init();
@@ -77,22 +105,32 @@ class CTOSService
         }
 
         $this->RESPONSE = $response;
-//        $this->envelope();
+        $this->receiveEnvelope();
 
     }
 
+    /**
+     * @return bool|string
+     */
     public function getResponse()
     {
-        return $this->RESPONSE;
+        return decode64Response($this->INSIDE_ENVELOPE);
     }
 
-    private function envelope()
+    /**
+     * Remove the envelope response
+     */
+    private function receiveEnvelope()
     {
         $response1 = str_replace("<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\"><S:Body><ns2:requestResponse xmlns:ns2=\"http://ws.proxy.xml.ctos.com.my/\"><return>", "", $this->RESPONSE);
         $response2 = str_replace("</return></ns2:requestResponse></S:Body></S:Envelope>", "", $response1);
         $this->INSIDE_ENVELOPE = $response2;
     }
 
+    /**
+     * @param $contentType
+     * @return string
+     */
     private function setContentType($contentType)
     {
         if (!empty($contentType)) {
@@ -101,6 +139,10 @@ class CTOSService
         return "text/xml;charset=\"utf-8\"";
     }
 
+    /**
+     * @param $accept
+     * @return string
+     */
     private function setAccept($accept)
     {
         if (!empty($accept)) {
@@ -110,6 +152,10 @@ class CTOSService
         return "text/xml";
     }
 
+    /**
+     * @param $cacheControl
+     * @return string
+     */
     private function setCacheControl($cacheControl)
     {
         if (!empty($cacheControl)) {
@@ -118,6 +164,10 @@ class CTOSService
         return "no-cache";
     }
 
+    /**
+     * @param $pragma
+     * @return string
+     */
     private function setPragma($pragma)
     {
         if (!empty($pragma)) {
@@ -126,6 +176,10 @@ class CTOSService
         return "no-cache";
     }
 
+    /**
+     * @param $soapAction
+     * @return string
+     */
     private function setSOAPAction($soapAction)
     {
         if (!empty($soapAction)) {
@@ -134,21 +188,5 @@ class CTOSService
         return "";
     }
 
-//    public function listCTOSReport()
-//    {
-//        return $data['1' => "Request ID",
-//              '2' => "Generate CTOS Report",
-//              '3' => "Request SSM",
-//              '4' => "Request Index",
-//              '5' => "Request Party", // have
-//              '6' => "Request Party Confirm", //have
-//              '7' => "Request ID Confirm",
-//              '8' => "Request Lite", // have
-//              '9'  => "Request Confirm", // have
-//              '10' => "Request", // have
-//              '11' => "Generate TR Report",
-//              '12' => "Generate CTOS Lite Report"
-//            ];
-//    }
 
 }
