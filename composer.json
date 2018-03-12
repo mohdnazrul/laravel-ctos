@@ -1,6 +1,6 @@
 {
     "name": "mohdnazrul/laravel-ctos",
-    "description": "Soapclient integrate using Laravel (CTOS WSDL API)",
+    "description": "Soap Client Using Laravel 5.4 (CTOS WSDL)",
     "license": "MIT",
     "authors": [
         {
@@ -15,6 +15,9 @@
     "autoload": {
         "psr-4": {
             "MohdNazrul\\CTOSLaravel\\": "src"
-        }
+        },
+        "files": [
+          "helper.php"
+        ]
     }
 }

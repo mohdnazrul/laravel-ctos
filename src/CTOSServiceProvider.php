@@ -13,7 +13,7 @@ class CTOSServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      //
+       //
     }
 
     /**
