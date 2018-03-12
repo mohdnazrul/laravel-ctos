@@ -52,6 +52,7 @@ class CTOSService
 
 
     /**
+     * Set Header
      * @param null $contentType
      * @param null $accept
      * @param null $cacheControl
@@ -82,6 +83,7 @@ class CTOSService
     }
 
     /**
+     * Connection
      * @return \Exception
      */
     public function connect()
@@ -110,6 +112,7 @@ class CTOSService
     }
 
     /**
+     * Get Response (Decode 64 Response)
      * @return bool|string
      */
     public function getResponse()
@@ -128,6 +131,7 @@ class CTOSService
     }
 
     /**
+     * Set Content Type
      * @param $contentType
      * @return string
      */
@@ -140,6 +144,7 @@ class CTOSService
     }
 
     /**
+     * Set Accept
      * @param $accept
      * @return string
      */
@@ -153,6 +158,7 @@ class CTOSService
     }
 
     /**
+     * Set Cache Control
      * @param $cacheControl
      * @return string
      */
@@ -165,6 +171,7 @@ class CTOSService
     }
 
     /**
+     * Set Pragma
      * @param $pragma
      * @return string
      */
@@ -177,6 +184,7 @@ class CTOSService
     }
 
     /**
+     * Set SOAP Action
      * @param $soapAction
      * @return string
      */
