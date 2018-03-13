@@ -10,11 +10,13 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "illuminate/support": "5.4.*"
+        "illuminate/support": "5.4.*",
+        "phpunit/phpunit": "^7.0.2"
     },
     "autoload": {
         "psr-4": {
-            "MohdNazrul\\CTOSLaravel\\": "src"
+            "MohdNazrul\\CTOSLaravel\\": "src",
+            "MohdNazrul\\CTOSLaravelTest\\": "tests"
         },
         "files": [
           "helper.php"

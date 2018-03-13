@@ -4,7 +4,7 @@
  * @copyright MIT
  * @version 1.0.1
  * @created_by Nazrul Mustaffa
- * @email nazrul.mustaffa@capitalbay.com
+ * @email nazrulmustaffa@gmail.com
  */
 
 namespace MohdNazrul\CTOSLaravel;
