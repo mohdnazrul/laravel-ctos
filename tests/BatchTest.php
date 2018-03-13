@@ -1,13 +1,8 @@
 <?php
 namespace MohdNazrul\CTOSLaravelTest;
-
+use PHPUnit\Framework\TestCase;
 
 class BatchTest extends TestCase{
-
-    public function __construct()
-     {
-        echo 'BatchTest';
-     }
 
      public function testEmpty(){
          $records = [];
@@ -15,9 +10,7 @@ class BatchTest extends TestCase{
 
          return $records;
      }
-
-
-
+     
 }
 
 
