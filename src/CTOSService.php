@@ -100,11 +100,13 @@ class CTOSService
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->HEADERS);
 
         $response = curl_exec($ch);
-        curl_close($ch);
-
         if (curl_errno($ch)) {
             return new \Exception(curl_error($ch));
         }
+
+
+        curl_close($ch);
+
 
         $this->RESPONSE = $response;
         $this->receiveEnvelope();
