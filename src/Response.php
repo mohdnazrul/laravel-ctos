@@ -96,6 +96,7 @@ class Response
     //DCHEQS
     private $SEC_SUM_DCHEQS;
     private $SEC_SUM_DCHEQS_ENTITY;
+
     //SECTION A
     private $SECTION_A;
     private $SECTION_A_ATTRIBUTES;
@@ -110,10 +111,47 @@ class Response
     private $SECTION_A_RECORD_ADDR;
     private $SECTION_A_RECORD_ADDR1;
     private $SECTION_A_RECORD_CCRIS_ADDRESSES;
+    private $SECTION_A_SOURCE;
+    private $SECTION_A_NATIONALITY;
+    private $SECTION_A_BIRTH_DATE;
 
     //SECTION B
+    private $SECTION_B;
+    private $SECTION_B_ATTRIBUTES;
+    private $SECTION_B_HISTORY;
 
     //SECTION C
+    private $SECTION_C;
+    private $SECTION_C_ATTRIBUTES;
+
+    private $SECTION_C_DATA;
+
+    //SECTION D
+    private $SECTION_D;
+    private $SECTION_D_ATTRIBUTES;
+    private $SECTION_D_DATA;
+
+    //SECTION D2
+    private $SECTION_D2;
+    private $SECTION_D2_ATTRIBUTES;
+    private $SECTION_D2_DATA;
+
+    //SECTION CCRIS
+    private $SECTION_CCRIS;
+    private $SECTION_CCRIS_ATTRIBUTES;
+    private $SECTION_CCRIS_ATTR_TITLE;
+    private $SECTION_CCRIS_ATTR_DATA;
+    private $SECTION_CCRIS_SUM; // application, liabilities, legal, specail_attetion, special_name
+
+    private $SECTION_CCRIS_DERIVATIVES; //application, facilities -> [secure, unsecure]
+    private $SECTION_CCRIS_APPLICATIONS; // application -> array[application]
+    private $SECTION_CCRIS_ACCOUNTS; // application -> array[account]
+    private $SECTION_SPECIAL_ATT_ACCS;
+
+    private $SECTION_DCHEQS;
+    private $SECTION_DCHEQS_ATTRIBUTES;
+    private $SECTION_DCHEQS_DATA;
+
 
     public function __construct($xml)
     {
@@ -205,9 +243,9 @@ class Response
         $this->SEC_SUM_CCRIS_APP = $json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes'];
         $this->SEC_SUM_CCRIS_APP_TOTAL = empty($json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['total']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['total'];
         $this->SEC_SUM_CCRIS_APP_APPROVED = empty($json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['approved']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['approved'];
-        $this->SEC_SUM_CCRIS_APP_PENDING= empty($json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['pending']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['pending'];
+        $this->SEC_SUM_CCRIS_APP_PENDING = empty($json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['pending']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['application']['@attributes']['pending'];
 
-        $this->SEC_SUM_CCRIS_FACILITY =$json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes'];
+        $this->SEC_SUM_CCRIS_FACILITY = $json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes'];
         $this->SEC_SUM_CCRIS_FACILITY_TOTAL = empty($json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes']['total']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes']['total'];
         $this->SEC_SUM_CCRIS_FACILITY_ARREARS = empty($json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes']['arrears']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes']['arrears'];
         $this->SEC_SUM_CCRIS_FACILITY_VALUE = empty($json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes']['value']) ? '' : $json['enq_report']['enquiry']['section_summary']['ccris']['facility']['@attributes']['value'];
@@ -217,6 +255,65 @@ class Response
 
         $this->SEC_SUM_DCHEQS = $json['enq_report']['enquiry']['section_summary']['dcheqs']['@attributes'];
         $this->SEC_SUM_DCHEQS_ENTITY = empty($json['enq_report']['enquiry']['section_summary']['dcheqs']['@attributes']['entity']) ? '' : $json['enq_report']['enquiry']['section_summary']['dcheqs']['@attributes']['entity'];
+
+        $this->SECTION_A = $json['enq_report']['enquiry']['section_a'];
+        $this->SECTION_A_ATTRIBUTES = $json['enq_report']['enquiry']['section_a']['@attributes'];
+        $this->SECTION_A_DATA = empty($json['enq_report']['enquiry']['section_a']['@attributes']['data']) ? '' : $json['enq_report']['enquiry']['section_a']['@attributes']['data'];
+        $this->SECTION_A_TITLE = empty($json['enq_report']['enquiry']['section_a']['@attributes']['title']) ? '' : $json['enq_report']['enquiry']['section_a']['@attributes']['title'];
+        $this->SECTION_A_RECORD_ATTRIBUTES = $json['enq_report']['enquiry']['section_a']['record']['@attributes'];
+        $this->SECTION_A_RECORD_NAME = empty($json['enq_report']['enquiry']['section_a']['record']['name']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['name'];
+        $this->SECTION_A_RECORD_IC_LCNO = empty($json['enq_report']['enquiry']['section_a']['record']['ic_lcno']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['ic_lcno'];
+        $this->SECTION_A_RECORD_NIC_BRNO = empty($json['enq_report']['enquiry']['section_a']['record']['nic_brno']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['nic_brno'];
+        $this->SECTION_A_RECORD_ADDR = empty($json['enq_report']['enquiry']['section_a']['record']['addr']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['addr'];
+        $this->SECTION_A_RECORD_ADDR1 = empty($json['enq_report']['enquiry']['section_a']['record']['addr1']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['addr1'];
+        $this->SECTION_A_RECORD_CCRIS_ADDRESSES = empty($json['enq_report']['enquiry']['section_a']['record']['ccris_addresses']['ccris_address']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['ccris_addresses']['ccris_address'];
+        $this->SECTION_A_SOURCE = empty($json['enq_report']['enquiry']['section_a']['record']['source']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['source'];
+        $this->SECTION_A_NATIONALITY = empty($json['enq_report']['enquiry']['section_a']['record']['nationality']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['nationality'];
+        $this->SECTION_A_BIRTH_DATE = empty($json['enq_report']['enquiry']['section_a']['record']['birth_date']) ? '' : $json['enq_report']['enquiry']['section_a']['record']['birth_date'];
+
+        $this->SECTION_B = $json['enq_report']['enquiry']['section_b'];
+        $this->SECTION_B_ATTRIBUTES = $json['enq_report']['enquiry']['section_b']['@attributes'];
+        if ($json['enq_report']['enquiry']['section_b']['@attributes']['data'] == "true") {
+            $this->SECTION_B_HISTORY = $json['enq_report']['enquiry']['section_b']['period'];
+        }
+
+        $this->SECTION_C = $json['enq_report']['enquiry']['section_c'];
+        $this->SECTION_C_ATTRIBUTES = $json['enq_report']['enquiry']['section_c']['@attributes'];
+        if ($json['enq_report']['enquiry']['section_c']['@attributes']['data'] == "true") {
+            $this->SECTION_C_DATA = $json['enq_report']['enquiry']['section_c'];
+        }
+
+        $this->SECTION_D = $json['enq_report']['enquiry']['section_d'];
+        $this->SECTION_D_ATTRIBUTES = $json['enq_report']['enquiry']['section_d']['@attributes'];
+        if ($json['enq_report']['enquiry']['section_c']['@attributes']['data'] == "true") {
+            $this->SECTION_D_DATA = $json['enq_report']['enquiry']['section_d'];
+        }
+
+        $this->SECTION_D2 = $json['enq_report']['enquiry']['section_d'];
+        $this->SECTION_D2_ATTRIBUTES = $json['enq_report']['enquiry']['section_d']['@attributes'];
+        if ($json['enq_report']['enquiry']['section_c']['@attributes']['data'] == "true") {
+            $this->SECTION_D2_DATA = $json['enq_report']['enquiry']['section_d'];
+        }
+
+        $this->SECTION_CCRIS = $json['enq_report']['enquiry']['section_ccris'];
+        $this->SECTION_CCRIS_ATTRIBUTES = $json['enq_report']['enquiry']['section_ccris']['@attributes'];
+        $this->SECTION_CCRIS_ATTR_TITLE = empty($json['enq_report']['enquiry']['section_ccris']['@attributes']['title']) ? '' : $json['enq_report']['enquiry']['section_ccris']['@attributes']['title'];
+        $this->SECTION_CCRIS_ATTR_DATA = empty($json['enq_report']['enquiry']['section_ccris']['@attributes']['data']) ? '' : $json['enq_report']['enquiry']['section_ccris']['@attributes']['data'];
+        if ($json['enq_report']['enquiry']['section_ccris']['@attributes']['data'] == 'true') {
+            $this->SECTION_CCRIS_SUM = empty($json['enq_report']['enquiry']['section_ccris']['summary']) ? '' : $json['enq_report']['enquiry']['section_ccris']['summary'];
+            $this->SECTION_CCRIS_DERIVATIVES = empty($json['enq_report']['enquiry']['section_ccris']['derivatives']) ? '' : $json['enq_report']['enquiry']['section_ccris']['derivatives'];
+            $this->SECTION_CCRIS_APPLICATIONS = empty($json['enq_report']['enquiry']['section_ccris']['applications']) ? '' : $json['enq_report']['enquiry']['section_ccris']['applications'];
+            $this->SECTION_CCRIS_ACCOUNTS = empty($json['enq_report']['enquiry']['section_ccris']['accounts']) ? '' : $json['enq_report']['enquiry']['section_ccris']['accounts'];
+            $this->SECTION_SPECIAL_ATT_ACCS = empty($json['enq_report']['enquiry']['section_ccris']['special_attention_accs']) ? '' : $json['enq_report']['enquiry']['section_ccris']['special_attention_accs'];
+        }
+
+        $this->SECTION_DCHEQS = $json['enq_report']['enquiry']['section_dcheqs'];
+        $this->SECTION_DCHEQS_ATTRIBUTES = $json['enq_report']['enquiry']['section_dcheqs']['@attributes'];
+        if ($json['enq_report']['enquiry']['section_dcheqs']['@attributes']['data'] == 'true') {
+            $this->SECTION_DCHEQS_DATA = $json['enq_report']['enquiry']['section_dcheqs'];
+        }
+
+
     }
 
     public function getVersion()
@@ -271,6 +368,119 @@ class Response
             'enq_code' => empty($this->SUM_ENQ_CODE) ? '' : $this->SUM_ENQ_CODE
         ];
         return $data;
+    }
+
+    public function getEnquiry()
+    {
+        $data = [
+            'ctos' => $this->SEC_SUM_CTOS,
+            'tr' => $this->SEC_SUM_TREX,
+            'ccris' => $this->SEC_SUM_CCRIS,
+            'dcheqs' => $this->SEC_SUM_DCHEQS
+        ];
+
+        return $data;
+    }
+
+    public function getEnquirySectionSummaryCTOS()
+    {
+        $data = [
+            'bankruptcy' => ['status' => $this->SEC_SUM_CTOS_BANKRUPTCY_STATUS],
+            'legal' => [
+                'total' => $this->SEC_SUM_CTOS_LEGAL_TOTAL,
+                'value' => $this->SEC_SUM_CTOS_LEGAL_VALUE
+            ],
+            'legal_personal_capacity' => [
+                'total' => $this->SEC_SUM_CTOS_LEGAL_PERS_CAP_TOTAL,
+                'value' => $this->SEC_SUM_CTOS_LEGAL_PERS_CAP_VALUE
+            ],
+            'legal_non_personal_capacity' => [
+                'total' => $this->SEC_SUM_CTOS_LEGAL_NON_PERS_CAP_TOTAL,
+                'value' => $this->SEC_SUM_CTOS_LEGAL_NON_PERS_CAP_VALUE
+            ]
+        ];
+
+        return $data;
+    }
+
+    public function getEnquirySectionSummaryTR()
+    {
+        $data = [
+            'negative' => $this->SEC_SUM_TREX_REF_NEGT,
+            'positive' => $this->SEC_SUM_TREX_REF_POST
+        ];
+
+        return $data;
+    }
+
+    public function getEnquirySectionSummaryCCRIS()
+    {
+        $data = [
+            'application' => [
+                'total' => $this->SEC_SUM_CCRIS_APP_TOTAL,
+                'approved' => $this->SEC_SUM_CCRIS_APP_APPROVED,
+                'pending' => $this->SEC_SUM_CCRIS_APP_PENDING
+            ],
+            'facility' => [
+                'total' => $this->SEC_SUM_CCRIS_FACILITY_TOTAL,
+                'arrears' => $this->SEC_SUM_CCRIS_FACILITY_ARREARS,
+                'value' => $this->SEC_SUM_CCRIS_FACILITY_VALUE
+            ],
+            'special_attention' => [
+                'accounts' => $this->SEC_SUM_CCRIS_SPECIAL_ATTENTION_ACC
+            ]
+        ];
+        return $data;
+    }
+
+    public function getEnquirySectionSummaryDCHEQS()
+    {
+        $data = [
+            'entity' => $this->SEC_SUM_DCHEQS_ENTITY
+        ];
+
+        return $data;
+    }
+
+    public function getSection_A()
+    {
+        return $this->SECTION_A;
+    }
+
+    public function getSection_A_Attributes()
+    {
+        return $this->SECTION_A_ATTRIBUTES;
+    }
+
+    public function getSection_A_Record()
+    {
+        $data = [
+            'attributes' => $this->SECTION_A_RECORD_ATTRIBUTES,
+            'name' => $this->SECTION_A_RECORD_NAME,
+            'ic_lcno' => $this->SECTION_A_RECORD_IC_LCNO,
+            'nic_brno' => $this->SECTION_A_RECORD_NIC_BRNO,
+            'addr' => $this->SECTION_A_RECORD_ADDR,
+            'addr1' => $this->SECTION_A_RECORD_ADDR1,
+            'ccris_addresses' => $this->SECTION_A_RECORD_CCRIS_ADDRESSES,
+            'source' => $this->SECTION_A_SOURCE,
+            'nationality' => $this->SECTION_A_NATIONALITY,
+            'birth_date' => $this->SECTION_A_BIRTH_DATE
+        ];
+
+        return $data;
+
+    }
+
+    public function getSection_B(){
+        return $this->SECTION_B;
+    }
+
+    public function getSection_B_Attributes(){
+        return $this->SECTION_B_ATTRIBUTES;
+    }
+
+    public function getSection_B_History(){
+        return $this->SECTION_B_HISTORY;
     }
 
 
