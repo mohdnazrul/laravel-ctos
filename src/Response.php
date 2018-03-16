@@ -100,8 +100,7 @@ class Response
     private $SECTION_A_ATTRIBUTES;
     private $SECTION_A_DATA;
     private $SECTION_A_TITLE;
-
-    private $SECTION_A_RECORD;
+    
     private $SECTION_A_RECORD_ATTRIBUTES;
     private $SECTION_A_RECORD_NAME;
     private $SECTION_A_RECORD_IC_LCNO;
@@ -193,6 +192,7 @@ class Response
         $this->ENQ_SUM_BASIC_GROUP_CODE = empty($json['enq_report']['summary']['enq_sum']['@attributes']['pcode']) ? '' : $json['enq_report']['summary']['enq_sum']['@attributes']['pcode'];
         $this->ENQ_SUM_RECORD_SEQUENCE = empty($json['enq_report']['summary']['enq_sum']['@attributes']['seq']) ? '' : $json['enq_report']['summary']['enq_sum']['@attributes']['seq'];
 
+        $this->SUM = $json['enq_report']['summary']['enq_sum'];
         $this->SUM_NAME = empty($json['enq_report']['summary']['enq_sum']['name']) ? '' : $json['enq_report']['summary']['enq_sum']['name'];
         $this->SUM_IC_LCNO = empty($json['enq_report']['summary']['enq_sum']['ic_lcno']) ? '' : $json['enq_report']['summary']['enq_sum']['ic_lcno'];
         $this->SUM_NIC_BRNO = empty($json['enq_report']['summary']['enq_sum']['nic_brno']) ? '' : $json['enq_report']['summary']['enq_sum']['nic_brno'];
@@ -342,6 +342,10 @@ class Response
             'enq_status' => empty($this->HEADER_ENQ_STATUS) ? '' : $this->HEADER_ENQ_STATUS
         ];
         return $data;
+    }
+
+    public function getSummaryJSON(){
+        return $this->SUM;
     }
 
     public function getSummary()
