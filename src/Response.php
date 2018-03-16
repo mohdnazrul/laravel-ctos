@@ -483,5 +483,80 @@ class Response
         return $this->SECTION_B_HISTORY;
     }
 
+    public function getSection_C(){
+        return $this->SECTION_C;
+    }
+
+    public function getSection_C_Attributes(){
+        return $this->SECTION_C_ATTRIBUTES;
+    }
+
+    public function getSection_C_Data(){
+        return $this->SECTION_C_DATA;
+    }
+
+    public function getSection_D(){
+        return $this->SECTION_D;
+    }
+
+    public function getSection_D_Attributes(){
+        return $this->SECTION_D_ATTRIBUTES;
+    }
+
+    public function getSection_D_Data(){
+        return $this->SECTION_D_DATA;
+    }
+
+    public function getSection_D2(){
+        return $this->SECTION_D2;
+    }
+
+    public function getSection_D2_Attributes(){
+        return $this->SECTION_D2_ATTRIBUTES;
+    }
+
+    public function getSection_D2_Data(){
+        return $this->SECTION_D2_DATA;
+    }
+
+    public function getSectionCCRIS(){
+        return $this->SECTION_CCRIS;
+    }
+
+    public function getSectionCCRIS_Attributes(){
+        return $this->SECTION_CCRIS_ATTRIBUTES;
+    }
+
+    public function getSectionCCRIS_Summary(){
+        return $this->SECTION_CCRIS_SUM;
+    }
+
+    public function getSectionCCRIS_Derivatives(){
+        return $this->SECTION_CCRIS_DERIVATIVES;
+    }
+
+    public function getSectionCCRIS_Applications(){
+        return $this->SECTION_CCRIS_APPLICATIONS;
+    }
+
+    public function getSectionCCRIS_Accounts(){
+        return $this->SECTION_CCRIS_ACCOUNTS;
+    }
+
+    public function getSection_SpecialAttAccs(){
+        return $this->SECTION_SPECIAL_ATT_ACCS;
+    }
+
+    public function getSection_DCHEQS(){
+        return $this->SECTION_DCHEQS;
+    }
+
+    public function getSection_DCHEQS_Attributes(){
+        return $this->SECTION_DCHEQS_ATTRIBUTES;
+    }
+
+    public function getSection_DCHEQS_Data(){
+        return $this->SECTION_DCHEQS_DATA;
+    }
 
 }
