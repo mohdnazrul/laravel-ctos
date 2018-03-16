@@ -18,8 +18,6 @@ class Response
     private $ENQUIRY_REPORT_ID;
     private $ENQUIRY_REPORT_TYPE;
     private $ENQUIRY_REPORT_TITLE;
-    private $ENQUIRY_HEADER;
-    private $ENQUIRY_SUMMARY;
 
     // Enquiry Header
     private $HEADER;
