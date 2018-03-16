@@ -100,7 +100,7 @@ class Response
     private $SECTION_A_ATTRIBUTES;
     private $SECTION_A_DATA;
     private $SECTION_A_TITLE;
-    
+
     private $SECTION_A_RECORD_ATTRIBUTES;
     private $SECTION_A_RECORD_NAME;
     private $SECTION_A_RECORD_IC_LCNO;
