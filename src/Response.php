@@ -272,7 +272,7 @@ class Response
         $this->SECTION_B = $json['enq_report']['enquiry']['section_b'];
         $this->SECTION_B_ATTRIBUTES = $json['enq_report']['enquiry']['section_b']['@attributes'];
         if ($json['enq_report']['enquiry']['section_b']['@attributes']['data'] == "true") {
-            $this->SECTION_B_HISTORY = $json['enq_report']['enquiry']['section_b']['period'];
+            $this->SECTION_B_HISTORY = $json['enq_report']['enquiry']['section_b'];
         }
 
         $this->SECTION_C = $json['enq_report']['enquiry']['section_c'];
@@ -283,14 +283,14 @@ class Response
 
         $this->SECTION_D = $json['enq_report']['enquiry']['section_d'];
         $this->SECTION_D_ATTRIBUTES = $json['enq_report']['enquiry']['section_d']['@attributes'];
-        if ($json['enq_report']['enquiry']['section_c']['@attributes']['data'] == "true") {
+        if ($json['enq_report']['enquiry']['section_d']['@attributes']['data'] == "true") {
             $this->SECTION_D_DATA = $json['enq_report']['enquiry']['section_d'];
         }
 
-        $this->SECTION_D2 = $json['enq_report']['enquiry']['section_d'];
-        $this->SECTION_D2_ATTRIBUTES = $json['enq_report']['enquiry']['section_d']['@attributes'];
-        if ($json['enq_report']['enquiry']['section_c']['@attributes']['data'] == "true") {
-            $this->SECTION_D2_DATA = $json['enq_report']['enquiry']['section_d'];
+        $this->SECTION_D2 = $json['enq_report']['enquiry']['section_d2'];
+        $this->SECTION_D2_ATTRIBUTES = $json['enq_report']['enquiry']['section_d2']['@attributes'];
+        if ($json['enq_report']['enquiry']['section_d2']['@attributes']['data'] == "true") {
+            $this->SECTION_D2_DATA = $json['enq_report']['enquiry']['section_d2'];
         }
 
         $this->SECTION_CCRIS = $json['enq_report']['enquiry']['section_ccris'];
