@@ -74,6 +74,7 @@ class Records
     {
         $this->PARTY_TYPE = $party_type;
         $this->BASIC_GROUP_CODE = $basic_group_code;
+        $this->ICLC_NO = $iclc_no;
         $this->NICBR_NO = $nicbr_no;
         $this->NAME = $name;
         $this->MOBILE_NO = $mobile_no;
