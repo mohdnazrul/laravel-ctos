@@ -123,6 +123,15 @@ class CTOSService
     }
 
     /**
+     * Get Response (Encode 64 Response)
+     * @return mixed
+     */
+    public function getResponseEncode64()
+    {
+        return $this->INSIDE_ENVELOPE;
+    }
+
+    /**
      * Remove the envelope response
      */
     private function receiveEnvelope()
