@@ -220,7 +220,7 @@ class Response
         // 5.1 CTOS
         $this->SEC_SUM_CTOS = $json['enq_report']['enquiry']['section_summary']['ctos'];
         // 5.1.1 CTOS Bankruptcy
-        $this->SEC_SUM_CTOS_BANKRUPTCY = $json['enq_report']['enquiry']['section_summary']['ctos']['bankruptcy']['@attributes'];
+        $this->SEC_SUM_CTOS_BANKRUPTCY = empty($json['enq_report']['enquiry']['section_summary']['ctos']['bankruptcy']['@attributes']) ? '' : $json['enq_report']['enquiry']['section_summary']['ctos']['bankruptcy']['@attributes'];
         $this->SEC_SUM_CTOS_BANKRUPTCY_STATUS = empty($json['enq_report']['enquiry']['section_summary']['ctos']['bankruptcy']['@attributes']['status']) ? '' : $json['enq_report']['enquiry']['section_summary']['ctos']['bankruptcy']['@attributes']['status'];
         // 5.1.2 CTOS Legal
         $this->SEC_SUM_CTOS_LEGAL = $json['enq_report']['enquiry']['section_summary']['ctos']['legal']['@attributes'];
