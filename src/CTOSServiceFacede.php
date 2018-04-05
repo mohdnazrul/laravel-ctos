@@ -10,5 +10,5 @@ use Illuminate\Support\Facades\Facade;
 
 class CTOSServiceFacede extends Facade
 {
-    protected static function getFacadeAccessor(){return 'CTOSApi';}
+    protected static function getFacadeAccessor(){return 'CTOSService';}
 }

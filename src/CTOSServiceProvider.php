@@ -39,6 +39,6 @@ class CTOSServiceProvider extends ServiceProvider
     }
 
     public function provides() {
-        return ['CTOSApi'];
+        return ['CTOSService'];
     }
 }
