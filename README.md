@@ -78,9 +78,9 @@ A successful request returns the XML of the requested report
 
 **FOR LARAVEL SETUP CONFIGURATION:-**
 
-- Do composer require mohdnazrul/laravel-stos
+- Do composer require mohdnazrul/laravel-ctos
 ```php
-   composer require mohdnazrul/laravel-stos
+   composer require mohdnazrul/laravel-ctos
 ```
 - Add this syntax inside config/app.php
 ```php
