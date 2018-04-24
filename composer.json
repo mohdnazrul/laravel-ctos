@@ -8,7 +8,6 @@
             "email": "nazrulmustaffa@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
     },
     "require-dev": {
