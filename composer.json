@@ -1,6 +1,6 @@
 {
     "name": "mohdnazrul/laravel-ctos",
-    "description": "Soap Client Using Laravel 5.4 (CTOS WSDL)",
+    "description": "Soap Client Using Laravel 5.4 and above (CTOS WSDL)",
     "license": "MIT",
     "authors": [
         {
@@ -10,6 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
+    },
+    "require-dev": {
         "illuminate/support": "5.6.*",
         "phpunit/phpunit": "^7.0.2"
     },
